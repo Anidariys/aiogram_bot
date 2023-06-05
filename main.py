@@ -5,7 +5,8 @@ from bot import dp, bot, config
 
 app = FastAPI()
 WEBHOOK_PATH = f"/bot/{config.tg_bot.token}"
-WEBHOOK_URL = "https://9c19-46-172-156-66.eu.ngrok.io" + WEBHOOK_PATH
+NGROK_URL = "https://9c19-46-172-156-66.eu.ngrok.io"
+WEBHOOK_URL = NGROK_URL + WEBHOOK_PATH
 
 
 @app.on_event("startup")
