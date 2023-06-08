@@ -33,7 +33,7 @@ async def create_delivery_name(message: Message, state: FSMContext):
     user = get_user(data, database["group"])
     kb = bild_reply_kb(MAIN_LEXICON)
     if user:
-        await message.answer(text="Уже існує такий клієнт ❌", 
+        await message.answer(text="Такий клієнт вже існує ❌", 
             reply_markup=kb)
         await state.clear()
     else:
@@ -161,7 +161,7 @@ async def inline_add_location(callback: CallbackQuery, state: FSMContext):
         resize_keyboard=True,
         one_time_keyboard=True)
     await callback.message.answer(
-        text="Нажміль на кнопку,\nщоб відправити локаці ⬇️", 
+        text="Натисніть на кнопку,\nщоб відправити локацію ⬇️", 
         reply_markup=kb)
 
 
@@ -192,7 +192,7 @@ async def incorrect_delivery_location(message: Message, state: FSMContext):
         resize_keyboard=True,
         one_time_keyboard=True)
     await message.reply(
-        text="Нажміть на кнопку знизу,\nщоб відправити локацію ⬇️", 
+        text="Натисніть на кнопку знизу,\nщоб відправити локацію ⬇️", 
         reply_markup=kb)
 
 
@@ -231,7 +231,7 @@ async def incorrect_delivery_comment(message: Message, state: FSMContext):
     database = await state.get_data()
     client = database["name"]
     await message.reply(
-        text=f"Введіть номер телефона для :\n<b>{client}</b>\
+        text=f"Введіть номер телефону для :\n<b>{client}</b>\
             \nВін має складатися з 10 цифр")
 
 
