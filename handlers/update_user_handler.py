@@ -22,7 +22,7 @@ async def choice_update_group(callback: CallbackQuery, state: FSMContext):
     await state.update_data(group=CHOICE_LEXICON[callback.data])
     await callback.message.delete()
     await callback.message.answer(
-        text="Вкажіть прізвище та імя клієнта 🧑‍⚕️", reply_markup=ReplyKeyboardRemove())
+        text="Вкажіть прізвище та ім'я клієнта 🧑‍⚕️", reply_markup=ReplyKeyboardRemove())
 
 
 @router.message(StateFilter(FSMUpdateForm.set_name), ValidName())
@@ -102,7 +102,7 @@ async def update_user_data(message: Message, state: FSMContext):
 
 @router.message(StateFilter(FSMUpdateForm.set_value))
 async def incorect_messsage(message: Message):
-    await message.answer(text="коротковато...попробуйде більше символів.")    
+    await message.answer(text="короткувато...попробуйте більше символів.")    
 
 
 @router.callback_query(Text(text="photo"), StateFilter(FSMUpdateForm.set_kay))
@@ -127,7 +127,7 @@ async def update_photo(message: Message, state: FSMContext):
 
 @router.message(StateFilter(FSMUpdateForm.set_photo))
 async def incorect_user_photo(message: Message, state: FSMContext):
-    await message.answer(text="Це не похожу на фото...")
+    await message.answer(text="Це не схоже на фото...")
 
 
 @router.callback_query(
@@ -145,7 +145,7 @@ async def inline_get_location(callback: CallbackQuery, state: FSMContext):
         one_time_keyboard=True)
     await callback.message.delete()
     await callback.message.answer(
-        text="Нажміль на кнопку,\nщоб відправити локаці ⬇️", 
+        text="Натисніть на кнопку,\nщоб відправити локацію ⬇️", 
         reply_markup=kb)
 
 
@@ -180,7 +180,7 @@ async def update_user_location(message: Message):
         resize_keyboard=True,
         one_time_keyboard=True)
     await callback.message.answer(
-        text="Нажміль на кнопку,\nщоб відправити локаці ⬇️", 
+        text="Натисніть на кнопку,\nщоб відправити локацію ⬇️", 
         reply_markup=kb)
 
 
