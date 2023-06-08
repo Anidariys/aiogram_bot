@@ -31,7 +31,7 @@ ADMIN = int(load_config().tg_bot.admin)
                 IsAdmin())
 async def command_calcel(message: Message, state: FSMContext):
     await state.clear()
-    await message.reply(text="Закрив відкритий стан")
+    await message.reply(text="Завершили всі дії")
 
 
 @router.message(Command(commands='users'),
@@ -53,7 +53,7 @@ async def delet_user(message: Message, state: FSMContext):
     await state.set_state(FSMAdmindDeleteUser.delete)
     await message.answer(
         text="Пришліть айді юзера кого будем видаляти\n"
-             "/users - щоб переглянути юзурів білого списку"
+             "/users - щоб переглянути юзерів білого списку"
             )
 
 
@@ -71,7 +71,7 @@ async def admin_submission(message: Message, state: FSMContext):
 @router.message(StateFilter(FSMAdmindDeleteUser.delete),
                 IsAdmin())
 async def admin_invalid_submission(message: Message, state: FSMContext):
-    await message.answer(text="Чекаю на йді юзера для видалення")
+    await message.answer(text="Чекаю на айді юзера для видалення")
 
 
 @router.message(CommandStart(),
@@ -133,7 +133,7 @@ async def refuse_add_white_list(message: Message, state: FSMContext):
         await message.answer(
             text="Помилка в відмові !!\n" 
             + str(e) 
-            + "\nПопробуйде ще раз")
+            + "\nПопробуйте ще раз")
     finally:
         await state.clear()
 
@@ -163,7 +163,7 @@ async def invalid_user_id_from_admin(
     message: Message, state: FSMContext):
     user_text = message.text
     await message.answer(
-        text="чекаю на айді юзера якого добавляємо в білий список\n" 
+        text="чекаю на айді юзера якого додаємо в білий список\n" 
         + "це має бути число без букв і символів\n"  
         + f"а ви прислали: {user_text}")
 
@@ -179,6 +179,6 @@ async def wait_decision_message(message: Message):
 @router.message(~IsInWiteList(), ~IsAdmin(), ~IsNotInDecisionList())
 async def initial_message(message: Message):
     await message.answer(
-        text="Ви не заєстрований клієнт\n"
-        + "Щоб подати заявку над міть /start\n" 
+        text="Ви не зареєстрований клієнт\n"
+        + "Щоб подати заявку натисніть /start\n" 
         + "Це може зайняти деякий час...")
