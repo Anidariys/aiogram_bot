@@ -29,7 +29,7 @@ async def create_buss_name(message: Message, state: FSMContext):
     user = get_user(data, database["group"])
     kb = bild_reply_kb(MAIN_LEXICON)
     if user:
-        await message.answer(text="Уже існує такий клієнт ❌", reply_markup=kb)
+        await message.answer(text="Такий клієнт вже існує ❌", reply_markup=kb)
         await state.clear()
     else:
         await state.update_data(name=data)
