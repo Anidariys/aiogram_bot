@@ -22,7 +22,7 @@ async def choice_delete_clent_group(
     await state.update_data(group=CHOICE_LEXICON[callback.data])
     await callback.message.delete()
     await callback.message.answer(
-        text="Вкажіть прізвище та імя клієнта 🧑‍⚕️", reply_markup=ReplyKeyboardRemove())
+        text="Вкажіть прізвище та ім'я клієнта 🧑‍⚕️", reply_markup=ReplyKeyboardRemove())
 
 
 @router.message(StateFilter(FSMDeletClient.get_name), ValidName())
