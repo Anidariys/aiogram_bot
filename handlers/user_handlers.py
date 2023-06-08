@@ -29,7 +29,7 @@ async def process_help_command(message: Message):
 @router.message(Command(commands='cancel'),
                 StateFilter(default_state))
 async def command_calcel(message: Message):
-    await message.reply(text="У вас немає не завершених дій ")
+    await message.reply(text="У вас немає незавершених дій ")
 
 
 @router.message(Command(commands='cancel'),
@@ -93,7 +93,7 @@ async def delete_clent_handler(message: Message, state: FSMContext):
     await state.set_state(FSMDeletClient.get_group)
     kb = inline_keyboard(CHOICE_LEXICON, 2)
     await message.answer(
-        text="Виберіть з відки ми \nбудемо його видаляти :", reply_markup=kb)
+        text="Виберіть звідки ми \nбудемо його видаляти :", reply_markup=kb)
 
 
 @router.message(Text(text="Видалити клієнта"), ~StateFilter(default_state))
