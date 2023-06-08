@@ -20,7 +20,7 @@ async def choice_update_group(callback: CallbackQuery, state: FSMContext):
     await state.update_data(group=CHOICE_LEXICON[callback.data])
     await callback.message.delete()
     await callback.message.answer(
-        text="Вкажіть прізвище та імя клієнта 🧑‍⚕️", reply_markup=ReplyKeyboardRemove())
+        text="Вкажіть прізвище та ім'я клієнта 🧑‍⚕️", reply_markup=ReplyKeyboardRemove())
 
 
 @router.message(StateFilter(FSMGetClientData.get_name))
